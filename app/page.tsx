@@ -21,46 +21,43 @@ export default function Home() {
   return (
     <main>
       <section className="bg-background">
-        <div className="relative bg-background container justify-evenly h-screen flex items-center">
+        <div className="relative bg-background flex-col-reverse lg:flex-row container justify-center gap-y-4 lg:justify-evenly min-h-screen flex items-center">
           <Image
             src={LogoVertical}
             alt="로고"
             style={{
-              width: "30%",
+              width: "50%",
+              minWidth: "16rem",
+              maxWidth: "28rem",
             }}
             className="border-2 border-foreground/80 rounded-2xl shadow-xl drop-shadow-xl"
           />
           <div>
-            <h1 className="text-8xl leading-relaxed items-center flex font-black text-foreground">
+            <h1 className="text-6xl lg:text-8xl leading-relaxed items-center flex font-black text-foreground">
               멍心
             </h1>
-            <h2 className="text-foreground font-bold leading-relaxed text-5xl">
+            <h2 className="text-foreground font-bold leading-relaxed text-3xl xl:text-5xl">
               멍멍이와 함께하는 마음
             </h2>
           </div>
         </div>
       </section>
-      <section className="bg-white" id="event">
-        <div className="container h-screen flex justify-center  flex-col items-center relative">
-          <h1 className="text-foreground font-bold leading-relaxed text-5xl">
-            2024년 04월 27일 12시 인천 송도 도그파크
+      <section className="bg-white py-12" id="event">
+        <div className="container min-h-screen flex justify-center flex-col items-center relative">
+          <h1 className="text-foreground text-center font-bold leading-relaxed text-3xl xl:text-5xl">
+            2024년 04월 27일 12시
+            <br />
+            인천 송도 도그파크
           </h1>
-          <div className="flex items-center justify-around w-full mt-10">
-            <p className="text-foreground relative font-bold leading-relaxed text-2xl text-center">
+          <div className="flex items-center justify-around flex-col lg:flex-row w-full mt-10">
+            <p className="text-foreground relative font-bold leading-relaxed xl:text-2xl text-center">
               멍멍이를 위한 행복한 시간을 준비했습니다. <br />
               멍멍이와 함께하는 행복한 시간을 보내고 싶으신가요? <br />
               지금 바로 신청해주세요!
               <Image
                 src={DogImage}
                 alt="Dog Image"
-                style={{
-                  position: "absolute",
-                  top: "0",
-                  right: "0",
-                  width: "fit-content",
-                  height: "100%",
-                  transform: "translate(100%, 0)",
-                }}
+                className="lg:absolute lg:top-0 lg:right-0 mx-auto lg:translate-x-full w-24"
               />
             </p>
             <Card className="border-primary relative">
@@ -90,53 +87,39 @@ export default function Home() {
         </div>
       </section>
       <section className="bg-accent" id="survey">
-        <div className="container h-screen flex justify-center  flex-col items-center relative">
-          <h1 className="text-foreground font-bold leading-relaxed text-5xl">
+        <div className="container min-h-screen flex justify-center gap-y-8 flex-col items-center relative">
+          <h1 className="text-foreground text-center font-bold leading-relaxed text-3xl xl:text-5xl">
             설문조사 이벤트
           </h1>
-          <p className="text-foreground relative leading-relaxed font-bold text-2xl text-center mt-10">
+          <p className="text-foreground relative font-bold leading-relaxed xl:text-2xl text-center">
             오프라인 이벤트에 참여하지 못하는 분들을 대상으로 <br />
             설문조사 참여 후 추첨으로 제품 제공 이벤트를 진행합니다. <br />
             설문조사 참여 후 추첨으로 제품을 받아보세요!
             <Image
               src={DogImage}
               alt="Dog Image"
-              style={{
-                position: "absolute",
-                top: "0",
-                right: "0",
-                width: "fit-content",
-                height: "100%",
-                transform: "translate(100%, 0)",
-              }}
+              className="lg:absolute lg:top-0 lg:right-0 mx-auto lg:translate-x-full w-24"
             />
           </p>
-          <Button className="mt-10" asChild>
+          <Button asChild>
             <Link href={INSTAGRAM_LINK}>설문조사 하러가기</Link>
           </Button>
         </div>
       </section>
       <section className="bg-white" id="survey">
-        <div className="container h-screen flex justify-center  flex-col items-center relative">
-          <h1 className="text-foreground font-bold leading-relaxed text-5xl">
+        <div className="container min-h-screen flex justify-center  flex-col items-center relative">
+          <h1 className="text-foreground text-center font-bold leading-relaxed text-3xl xl:text-5xl">
             제품 알림 받기
           </h1>
-          <div className="flex items-center justify-around w-full mt-10">
-            <p className="text-foreground relative leading-relaxed font-bold text-2xl text-center">
+          <div className="flex items-center justify-around flex-col lg:flex-row w-full mt-10">
+            <p className="text-foreground relative font-bold leading-relaxed xl:text-2xl text-center">
               멍심의 제품이 완성되면 알림을 받아보세요! <br />
               멍심의 제품을 먼저 만나보고 싶으신가요? <br />
               지금 바로 등록해주세요!
               <Image
                 src={DogImage}
                 alt="Dog Image"
-                style={{
-                  position: "absolute",
-                  top: "0",
-                  right: "0",
-                  width: "fit-content",
-                  height: "100%",
-                  transform: "translate(100%, 0)",
-                }}
+                className="lg:absolute lg:top-0 lg:right-0 mx-auto lg:translate-x-full w-24"
               />
             </p>
             <Card className="border-primary relative w-96">

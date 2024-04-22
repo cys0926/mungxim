@@ -43,8 +43,8 @@ export const Header = () => {
             width: "auto",
           }}
         />
-        <nav className="flex items-center">
-          <ul className="flex space-x-4">
+        <nav className="hidden md:flex items-center">
+          <ul className="flex lg:space-x-4">
             {NAVIGATION_TABS.map((tab) => (
               <li key={tab.title}>
                 <Button
