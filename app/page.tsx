@@ -1,113 +1,162 @@
+import React from "react";
 import Image from "next/image";
+import DogImage from "../public/images/dog-image.png";
+import LogoVertical from "../public/images/logo-vertical.svg";
+import Map from "../public/images/map.png";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { INSTAGRAM_LINK } from "@/lib/const/navigationTabs.const";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main>
+      <section className="bg-background">
+        <div className="relative bg-background container justify-evenly h-screen flex items-center">
+          <Image
+            src={LogoVertical}
+            alt="로고"
+            style={{
+              width: "30%",
+            }}
+            className="border-2 border-foreground/80 rounded-2xl shadow-xl drop-shadow-xl"
+          />
+          <div>
+            <h1 className="text-8xl leading-relaxed items-center flex font-black text-foreground">
+              멍心
+            </h1>
+            <h2 className="text-foreground font-bold leading-relaxed text-5xl">
+              멍멍이와 함께하는 마음
+            </h2>
+          </div>
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
+      </section>
+      <section className="bg-white" id="event">
+        <div className="container h-screen flex justify-center  flex-col items-center relative">
+          <h1 className="text-foreground font-bold leading-relaxed text-5xl">
+            2024년 04월 27일 12시 인천 송도 도그파크
+          </h1>
+          <div className="flex items-center justify-around w-full mt-10">
+            <p className="text-foreground relative font-bold leading-relaxed text-2xl text-center">
+              멍멍이를 위한 행복한 시간을 준비했습니다. <br />
+              멍멍이와 함께하는 행복한 시간을 보내고 싶으신가요? <br />
+              지금 바로 신청해주세요!
+              <Image
+                src={DogImage}
+                alt="Dog Image"
+                style={{
+                  position: "absolute",
+                  top: "0",
+                  right: "0",
+                  width: "fit-content",
+                  height: "100%",
+                  transform: "translate(100%, 0)",
+                }}
+              />
+            </p>
+            <Card className="border-primary relative">
+              <CardHeader>
+                <CardTitle>멍심 사전신청</CardTitle>
+                <CardDescription>
+                  2024년 04월 27일 12시 인천 송도 도그파크
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="relative h-96">
+                <Image
+                  src={Map}
+                  alt="Map Image"
+                  style={{
+                    height: "100%",
+                    width: "fit-content",
+                  }}
+                />
+              </CardContent>
+              <CardFooter>
+                <Button className="w-full" size="lg">
+                  사전신청하기
+                </Button>
+              </CardFooter>
+            </Card>
+          </div>
+        </div>
+      </section>
+      <section className="bg-accent" id="survey">
+        <div className="container h-screen flex justify-center  flex-col items-center relative">
+          <h1 className="text-foreground font-bold leading-relaxed text-5xl">
+            설문조사 이벤트
+          </h1>
+          <p className="text-foreground relative leading-relaxed font-bold text-2xl text-center mt-10">
+            오프라인 이벤트에 참여하지 못하는 분들을 대상으로 <br />
+            설문조사 참여 후 추첨으로 제품 제공 이벤트를 진행합니다. <br />
+            설문조사 참여 후 추첨으로 제품을 받아보세요!
+            <Image
+              src={DogImage}
+              alt="Dog Image"
+              style={{
+                position: "absolute",
+                top: "0",
+                right: "0",
+                width: "fit-content",
+                height: "100%",
+                transform: "translate(100%, 0)",
+              }}
+            />
           </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+          <Button className="mt-10" asChild>
+            <Link href={INSTAGRAM_LINK}>설문조사 하러가기</Link>
+          </Button>
+        </div>
+      </section>
+      <section className="bg-white" id="survey">
+        <div className="container h-screen flex justify-center  flex-col items-center relative">
+          <h1 className="text-foreground font-bold leading-relaxed text-5xl">
+            제품 알림 받기
+          </h1>
+          <div className="flex items-center justify-around w-full mt-10">
+            <p className="text-foreground relative leading-relaxed font-bold text-2xl text-center">
+              멍심의 제품이 완성되면 알림을 받아보세요! <br />
+              멍심의 제품을 먼저 만나보고 싶으신가요? <br />
+              지금 바로 등록해주세요!
+              <Image
+                src={DogImage}
+                alt="Dog Image"
+                style={{
+                  position: "absolute",
+                  top: "0",
+                  right: "0",
+                  width: "fit-content",
+                  height: "100%",
+                  transform: "translate(100%, 0)",
+                }}
+              />
+            </p>
+            <Card className="border-primary relative w-96">
+              <CardHeader>
+                <CardTitle>멍심 사전신청</CardTitle>
+                <CardDescription>
+                  2024년 04월 27일 12시 인천 송도 도그파크
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="relative">
+                <Label htmlFor="phoneNumber">전화번호</Label>
+                <Input id="phoneNumber" placeholder="전화번호" />
+              </CardContent>
+              <CardFooter>
+                <Button type="submit">알림신청하기</Button>
+              </CardFooter>
+            </Card>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
