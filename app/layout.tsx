@@ -1,18 +1,12 @@
-import type { Metadata } from "next";
 import "./globals.css";
-import { Header } from "@/components/common/Header";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib";
 import localFont from "next/font/local";
+import { AuthProvider } from "@/app/provider";
 
-const pretendard = localFont({
-  src: "./PretendardVariable.woff2",
-  variable: "--font-pretendard",
+const nanum = localFont({
+  src: "./NanumBaegEuiEuiCeonSa.ttf",
+  variable: "--font-nanum",
 });
-
-export const metadata: Metadata = {
-  title: "멍심(Mungxim) | 멍心",
-  description: "멍심(Mungxim)은 멍멍이와 함께하는 마음을 담은 프로젝트입니다.",
-};
 
 export default function RootLayout({
   children,
@@ -20,21 +14,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body
         className={cn(
-          "flex flex-col",
-          pretendard.className,
-          pretendard.variable,
+          "flex flex-col pt-8 max-h-screen bg-background h-screen min-h-screen",
+          nanum.className,
+          nanum.variable,
         )}
       >
-        <Header />
-        {children}
-        <footer className="flex justify-center items-center h-16 bg-gray-100">
-          <p className="text-sm text-gray-600">
-            &copy; 2021 Mungxim. All rights reserved.
-          </p>
-        </footer>
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );
