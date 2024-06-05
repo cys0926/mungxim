@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="ko">
       <body
         className={cn(
-          "flex flex-col pt-8 max-h-screen bg-background h-screen min-h-screen",
+          "flex flex-col pt-8 max-h-dvh bg-background h-dvh min-h-dvh",
           nanum.className,
           nanum.variable,
         )}

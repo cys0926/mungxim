@@ -8,11 +8,12 @@ export default function Layout({ children }: { children: ReactNode }) {
   const registered = useTempStore((state) => state.registered);
   const router = useRouter();
 
-  useEffect(() => {
-    if (!registered) {
-      router.replace("/register");
-    }
-  }, [registered, router]);
+  /* TODO : 주석 해제 필요 */
+  // useEffect(() => {
+  //   if (!registered) {
+  //     router.replace("/register");
+  //   }
+  // }, [registered, router]);
 
   return children;
 }

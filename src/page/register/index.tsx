@@ -3,7 +3,7 @@
 import { RegisterImage } from "@/page/register/ui/RegisterImage";
 import { RegisterName } from "@/page/register/ui/RegisterName";
 import { useRouter, useSearchParams } from "next/navigation";
-import { PrevButton } from "@/page/register/ui/PrevButton";
+import { PrevButton } from "@/shared/components";
 import { RegisterBirthday } from "@/page/register/ui/RegisterBirthday";
 import { RegisterSex } from "@/page/register/ui/RegisterSex";
 import { RegisterPersonality } from "@/page/register/ui/RegisterPersonality";
@@ -16,10 +16,8 @@ export const RegisterPage = () => {
   const router = useRouter();
 
   return (
-    <main className="min-h-[60vh] flex flex-col items-center justify-between">
-      <div className="flex justify-start px-2 items-end w-full">
-        {step !== "이미지" && <PrevButton />}
-      </div>
+    <main className="min-h-[60dvh] pt-20 flex flex-col items-center justify-between">
+      {step !== "이미지" && <PrevButton />}
       {step === "이미지" && (
         <RegisterImage onNext={() => router.push("?step=이름")} />
       )}

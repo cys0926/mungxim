@@ -1,5 +1,4 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
-import { NextButton } from "@/page/register/ui/NextButton";
 import { Button } from "@/shared/ui/button";
 import { CameraIcon } from "lucide-react";
 import { RegisterBase } from "@/page/register/ui/RegisterBase";

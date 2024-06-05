@@ -27,7 +27,7 @@ export const RegisterPersonality = ({ onNext }: Props) => {
 
   return (
     <RegisterBase
-      offset="75%"
+      offset="100%"
       title="아이의 성격을 선택해주세요"
       onNext={onNext}
     >

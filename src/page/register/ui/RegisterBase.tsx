@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { NextButton } from "@/page/register/ui/NextButton";
-import { HeartIcon } from "@/shared/assets/heart";
+
+import { HeartIcon } from "@/shared/assets";
 
 type Props = {
   title: string;
