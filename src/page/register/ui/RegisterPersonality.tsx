@@ -6,10 +6,11 @@ import { useRouter } from "next/navigation";
 import useTempStore from "@/shared/store/tempStore";
 
 type Props = {
-  onNext?: () => void;
+  onNext: () => void;
+  onPrev: () => void;
 };
 
-const options = [
+const PERSONALITIES = [
   "활발한",
   "얌전한",
   "친화적인",
@@ -20,29 +21,47 @@ const options = [
   "방어적인",
 ] as const;
 
-export const RegisterPersonality = ({ onNext }: Props) => {
-  const [selected, setSelected] = useState<(typeof options)[number][]>([]);
-  const { register } = useTempStore((state) => state.actions);
-  const router = useRouter();
+const SEXES = [
+  { icon: "♀", label: "딸" },
+  { icon: "♂", label: "아들" },
+] as const;
+
+export const RegisterPersonality = ({ onNext, onPrev }: Props) => {
+  const [selectedPersonalities, setSelectedPersonalities] = useState<
+    (typeof PERSONALITIES)[number][]
+  >([]);
+  const [selectedSex, setSelectedSex] = useState<"딸" | "아들">();
 
   return (
-    <RegisterBase
-      offset="100%"
-      title="아이의 성격을 선택해주세요"
-      onNext={onNext}
-    >
-      <div className="grid grid-cols-2 gap-x-4 gap-y-8">
-        {options.map((option, index) => (
+    <RegisterBase onPrev={onPrev} onNext={onNext}>
+      <h2>아이의 성격과 성별을 알려주세요</h2>
+      <div className="flex justify-center gap-x-8 w-screen">
+        {SEXES.map((option, index) => (
+          <Button
+            key={option.label}
+            variant={selectedSex === option.label ? "default" : "white"}
+            className={
+              "rounded-full flex flex-col w-32 h-32 items-center justify-center drop-shadow-lg"
+            }
+            onClick={() => setSelectedSex(option.label)}
+          >
+            <span className="font-black text-7xl">{option.icon}</span>
+            <span className="text-3xl font-medium">{option.label}</span>
+          </Button>
+        ))}
+      </div>
+      <div className="grid grid-cols-2 gap-x-4 gap-y-6">
+        {PERSONALITIES.map((option, index) => (
           <Button
             key={option}
+            variant={
+              selectedPersonalities.includes(option) ? "default" : "white"
+            }
             className={cn(
-              "rounded-full flex flex-col w-36 shadow items-center justify-center",
-              {
-                "bg-white text-black": !selected.includes(option),
-              },
+              "flex flex-col w-36 drop-shadow-lg items-center justify-center",
             )}
             onClick={() =>
-              setSelected((prev) =>
+              setSelectedPersonalities((prev) =>
                 prev.includes(option)
                   ? prev.filter((item) => item !== option)
                   : [...prev, option],
@@ -52,16 +71,6 @@ export const RegisterPersonality = ({ onNext }: Props) => {
             <span className="text-2xl">{option}</span>
           </Button>
         ))}
-        <Button
-          className="col-span-2 text-3xl rounded-full h-fit"
-          variant="secondary"
-          onClick={() => {
-            register();
-            router.push("/");
-          }}
-        >
-          시작하기
-        </Button>
       </div>
     </RegisterBase>
   );

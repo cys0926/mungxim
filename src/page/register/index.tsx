@@ -1,36 +1,38 @@
 "use client";
 
-import { RegisterImage } from "@/page/register/ui/RegisterImage";
-import { RegisterName } from "@/page/register/ui/RegisterName";
+import { RegisterProfile } from "@/page/register/ui/RegisterProfile";
 import { useRouter, useSearchParams } from "next/navigation";
-import { PrevButton } from "@/shared/components";
 import { RegisterBirthday } from "@/page/register/ui/RegisterBirthday";
-import { RegisterSex } from "@/page/register/ui/RegisterSex";
+import { RegisterBreed } from "@/page/register/ui/RegisterBreed";
 import { RegisterPersonality } from "@/page/register/ui/RegisterPersonality";
-
-type Step = "이미지" | "이름" | "생년월일" | "성별" | "성격";
+import { Step, STEP_ORDER } from "@/shared/const";
 
 export const RegisterPage = () => {
   const searchParams = useSearchParams();
-  const step = (searchParams.get("step") ?? "이미지") as Step;
+  const step = (searchParams.get("step") ?? STEP_ORDER[0]) as Step;
   const router = useRouter();
+  const pushStep = (step: Step) => () => router.push(`?step=${step}`);
 
-  return (
-    <main className="min-h-[60dvh] pt-20 flex flex-col items-center justify-between">
-      {step !== "이미지" && <PrevButton />}
-      {step === "이미지" && (
-        <RegisterImage onNext={() => router.push("?step=이름")} />
-      )}
-      {step === "이름" && (
-        <RegisterName onNext={() => router.push("?step=생년월일")} />
-      )}
-      {step === "생년월일" && (
-        <RegisterBirthday onNext={() => router.push("?step=성별")} />
-      )}
-      {step === "성별" && (
-        <RegisterSex onNext={() => router.push("?step=성격")} />
-      )}
-      {step === "성격" && <RegisterPersonality />}
-    </main>
-  );
+  switch (step) {
+    case "프로필":
+      return <RegisterProfile onNext={pushStep("생년월일")} />;
+    case "생년월일":
+      return (
+        <RegisterBirthday
+          onPrev={pushStep("프로필")}
+          onNext={pushStep("성격")}
+        />
+      );
+    case "성격":
+      return (
+        <RegisterPersonality
+          onPrev={pushStep("생년월일")}
+          onNext={pushStep("견종")}
+        />
+      );
+    case "견종":
+      return <RegisterBreed onPrev={pushStep("성격")} />;
+    default:
+      return <RegisterProfile onNext={pushStep("생년월일")} />;
+  }
 };

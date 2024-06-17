@@ -9,25 +9,33 @@ import { useState } from "react";
 
 type Props = {
   onNext: () => void;
+  onPrev: () => void;
 };
 
-export const RegisterBirthday = ({ onNext }: Props) => {
+export const RegisterBirthday = ({ onNext, onPrev }: Props) => {
   const [date, setDate] = useState<Date>();
 
   return (
-    <RegisterBase
-      offset="50%"
-      title="아이가 태어난 날을 선택해주세요"
-      onNext={onNext}
-    >
+    <RegisterBase onPrev={onPrev} onNext={onNext}>
+      <div className="text-center">
+        <h2>아이가 태어난 날을 선택해주세요</h2>
+        <p>정확하지 않아도 괜찮아요</p>
+      </div>
       <Popover>
         <PopoverTrigger asChild>
           <Button
-            variant={"outline"}
-            className={cn("text-2xl", !date && "text-muted-foreground")}
+            variant={date ? "ghost" : "outline"}
+            className={cn(
+              "text-2xl font-black rounded-md",
+              !date && "text-muted-foreground",
+            )}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
-            {date ? format(date, "yyyy년-mm월-dd일") : <span>태어난 날 선택</span>}
+            {date ? (
+              format(date, "yyyy년-MM월-dd일")
+            ) : (
+              <span>태어난 날 선택</span>
+            )}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0">
